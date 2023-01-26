@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			http-equiv="X-UA-Compatible"
+			content="IE=edge"
+		/>
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
+		<title>Document</title>
+
+		<style>
+			#map {
+				height: 50vh;
+			}
+
+			/* 
+ * Optional: Makes the sample page fill the window. 
+ */
+			html,
+			body {
+				height: 100%;
+				margin: 0;
+				padding: 0;
+			}
+
+			.custom-map-control-button {
+				background-color: #fff;
+				border: 0;
+				border-radius: 2px;
+				box-shadow: 0 1px 4px -1px rgba(0, 0, 0, 0.3);
+				margin: 10px;
+				padding: 0 0.5em;
+				font: 400 18px Roboto, Arial, sans-serif;
+				overflow: hidden;
+				height: 40px;
+				cursor: pointer;
+			}
+			.custom-map-control-button:hover {
+				background: rgb(235, 235, 235);
+			}
+		</style>
+		<!-- <script
+			type="text/javascript"
+			charset="UTF-8"
+			src="https://maps.googleapis.com/maps-api-v3/api/js/51/7/common.js"
+		></script>
+		<script
+			type="text/javascript"
+			charset="UTF-8"
+			src="https://maps.googleapis.com/maps-api-v3/api/js/51/7/util.js"
+		></script>
+		<script
+			type="text/javascript"
+			charset="UTF-8"
+			src="https://maps.googleapis.com/maps-api-v3/api/js/51/7/map.js"
+		></script>
+		<script
+			type="text/javascript"
+			charset="UTF-8"
+			src="https://maps.googleapis.com/maps-api-v3/api/js/51/7/geometry.js"
+		></script>
+		<script
+			type="text/javascript"
+			charset="UTF-8"
+			src="https://maps.googleapis.com/maps-api-v3/api/js/51/7/directions.js"
+		></script>
+		<script
+			type="text/javascript"
+			charset="UTF-8"
+			src="https://maps.googleapis.com/maps-api-v3/api/js/51/7/onion.js"
+		></script>
+		<script
+			type="text/javascript"
+			charset="UTF-8"
+			src="https://maps.googleapis.com/maps-api-v3/api/js/51/7/infowindow.js"
+		></script>
+		<script
+			type="text/javascript"
+			charset="UTF-8"
+			src="https://maps.googleapis.com/maps-api-v3/api/js/51/7/marker.js"
+		></script>
+		<script
+			type="text/javascript"
+			charset="UTF-8"
+			src="https://maps.googleapis.com/maps-api-v3/api/js/51/7/controls.js"
+		></script> -->
+	</head>
+	<body>
+		<div id="map"></div>
+		<div style="display: flex; align-items: center; font-size: 36px">
+			Near me:
+			<div id="curr-location"></div>
+		</div>
+	</body>
+	<script
+		src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=6385b55675a0bd614777a5c1"
+		type="text/javascript"
+		integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+		crossorigin="anonymous"
+	></script>
+	<script
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1lDeWCObDolArPKOXaO2OeQxAlgZBZGY&amp;callback=initMap&amp;v=weekly"
+		defer=""
+	></script>
+	<script
+		type="text/javascript"
+		language="javascript"
+		src="region-data.json"
+	></script>
+
+	<!-- <script>
+		let region;
+		let currProvince;
+		fetch('region-data.json')
+			.then((response) => response.json())
+			.then((data) => {
+				for (const key in data) {
+					console.log(data[key]);
+					region = data[key].region_name;
+					console.log('Region', region);
+
+					let provinces = data[key].province_list;
+
+					for (const province of Object.keys(provinces)) {
+						console.log(province);
+						currProvince = province;
+					}
+				}
+			});
+	</script> -->
+	<script src="index.js"></script>
+</html>

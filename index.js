@@ -5,13 +5,15 @@
 
 let locationResult = $('#curr-location');
 
-let city, regionResult, map;
+let city, regionResult, map, infoWindow;
 
 function initMap() {
 	map = new google.maps.Map(document.getElementById('map'), {
 		center: { lat: -34.397, lng: 150.644 },
 		zoom: 6,
 	});
+
+	infoWindow = new google.maps.InfoWindow();
 
 	// Try HTML5 geolocation.
 	if (navigator.geolocation) {
@@ -43,6 +45,7 @@ function initMap() {
 							if (address_component.types[0] == 'administrative_area_level_1') {
 								regionResult = address_component.long_name;
 							}
+							infoWindow.setContent(city);
 						});
 
 						fetch('region-data.json')
@@ -57,11 +60,16 @@ function initMap() {
 									console.log('data', data);
 									if (exists) {
 										locationResult.append(city + ',' + data[key].region_name);
+									} else {
+										console.log('not matched');
 									}
 								}
 							});
 					});
 
+				infoWindow.setPosition(pos);
+
+				infoWindow.open(map);
 				map.setCenter(pos);
 			},
 			() => {

@@ -55,14 +55,14 @@ function initMap() {
 									let a = data[key].province_list;
 									console.log('list', data[key].province_list);
 
-									let exists = Object.keys(a).includes(city.toUpperCase());
+									// let exists = Object.keys(a).includes(city.toUpperCase());
 
-									console.log('data', data);
-									if (exists) {
-										locationResult.append(city + ',' + data[key].region_name);
-									} else {
-										console.log('not matched');
-									}
+									// console.log('data', data);
+									// if (exists) {
+									// 	locationResult.append(city + ',' + data[key].region_name);
+									// } else {
+									// 	console.log('not matched');
+									// }
 								}
 							});
 					});

@@ -34,18 +34,22 @@ function initMap() {
 				fetch(url)
 					.then((response) => response.json())
 					.then((data) => {
-						// console.log(data.results[0].address_components);
+						console.log(data.results[0]);
 						data.results[0].address_components.forEach(function (
 							address_component
 						) {
-							if (address_component.types[0] == 'administrative_area_level_2') {
+							if (
+								address_component.types[0] == 'administrative_area_level_2' ||
+								address_component.types[0] == 'locality'
+							) {
 								city = address_component.long_name;
 							}
 
 							if (address_component.types[0] == 'administrative_area_level_1') {
 								regionResult = address_component.long_name;
 							}
-							infoWindow.setContent(city);
+							// infoWindow.setContent(city);
+							infoWindow.setContent(data.results[0].formatted_address);
 						});
 
 						fetch('region-data.json')
@@ -53,16 +57,17 @@ function initMap() {
 							.then((data) => {
 								for (const key in data) {
 									let a = data[key].province_list;
-									console.log('list', data[key].province_list);
+									// console.log('list', data[key].province_list);
 
-									// let exists = Object.keys(a).includes(city.toUpperCase());
+									let exists = Object.keys(a).includes(city.toUpperCase());
 
-									// console.log('data', data);
-									// if (exists) {
-									// 	locationResult.append(city + ',' + data[key].region_name);
-									// } else {
-									// 	console.log('not matched');
-									// }
+									console.log('EXIST', exists);
+
+									if (exists) {
+										locationResult.append(city + ',' + data[key].region_name);
+									} else {
+										console.log('not matched');
+									}
 								}
 							});
 					});

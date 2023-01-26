@@ -29,7 +29,7 @@ function initMap() {
 					pos.lat +
 					',' +
 					pos.lng +
-					'&key=AIzaSyD1lDeWCObDolArPKOXaO2OeQxAlgZBZGY';
+					'&key=';
 
 				fetch(url)
 					.then((response) => response.json())
